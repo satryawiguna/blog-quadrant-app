@@ -11,6 +11,7 @@ import AddCategory from "./components/admin/category/AddCategory";
 import EditCategory from "./components/admin/category/EditCategory";
 import AddBlog from "./components/admin/blog/AddBlog";
 import EditBlog from "./components/admin/blog/EditBlog";
+import CategoryList from "./components/CategoryList";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/blog/:id" element={<BlogDetail />} />
+      <Route path="/category/:id" element={<CategoryList />} />
       <Route
         path="/admin/dashboard"
         element={

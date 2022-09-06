@@ -23,7 +23,7 @@ const CommonSideBar = () => {
         </li>
         {categories.map((category, index) => (
           <li key={index}>
-            <Link to={"/category/`${category.id}`"}>{category.name}</Link>
+            <Link to={`/category/${category.id}`}>{category.name}</Link>
           </li>
         ))}
         <li>
