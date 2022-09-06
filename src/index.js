@@ -1,23 +1,26 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { persistor, store } from "./app/store";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import "bulma/css/bulma.css";
+import axios from "axios";
+import { PersistGate } from "redux-persist/integration/react";
 
-const container = document.getElementById('root');
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
+const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </BrowserRouter>
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

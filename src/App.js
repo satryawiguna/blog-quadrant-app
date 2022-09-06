@@ -1,57 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import Register from "./components/Register";
+import Dashboard from "./components/admin/Dashboard";
+import Category from "./components/admin/Category";
+import Blog from "./components/admin/Blog";
+import BlogDetail from "./components/BlogDetail";
+import AddCategory from "./components/admin/category/AddCategory";
+import EditCategory from "./components/admin/category/EditCategory";
+import AddBlog from "./components/admin/blog/AddBlog";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/blog/:id" element={<BlogDetail />} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <>
+            <Dashboard />
+          </>
+        }
+      />
+      <Route
+        path="/admin/category"
+        element={
+          <>
+            <Category />
+          </>
+        }
+      />
+      <Route
+        path="/admin/category/add"
+        element={
+          <>
+            <AddCategory />
+          </>
+        }
+      />
+      <Route
+        path="/admin/category/:id"
+        element={
+          <>
+            <EditCategory />
+          </>
+        }
+      />
+      <Route
+        path="/admin/blog"
+        element={
+          <>
+            <Blog />
+          </>
+        }
+      />
+      <Route
+        path="/admin/blog/add"
+        element={
+          <>
+            <AddBlog />
+          </>
+        }
+      />
+    </Routes>
   );
 }
 
