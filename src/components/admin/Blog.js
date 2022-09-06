@@ -54,8 +54,9 @@ const Blog = () => {
               <tr key={blog.id}>
                 <td>
                   <img
-                    src={`${process.env.REACT_APP_BASE_IMAGE_URL}/${blog.image_path}/${blog.image_file}`}
+                    src={`${process.env.REACT_APP_BASE_IMAGE_URL}${blog.image_path}/${blog.image_file}`}
                     width="50"
+                    height="50"
                   />
                 </td>
                 <td>{blog.title}</td>

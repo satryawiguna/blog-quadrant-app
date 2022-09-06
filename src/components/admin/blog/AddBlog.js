@@ -16,6 +16,7 @@ const AddBlog = () => {
   const navigate = useNavigate();
 
   const categories = useSelector(categorySelectors.selectAll);
+  const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(fetchAdminCategories());
@@ -24,26 +25,29 @@ const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [categoryId, setCategoryId] = useState(0);
   const [description, setDescription] = useState("");
-  const [file, setFile] = useState([]);
+  const [image, setImage] = useState([]);
+
   const [messages, setMessages] = useState([]);
 
   const store = async (e) => {
     e.preventDefault();
 
+    const image = e.currentTarget["image"].files[0];
+
     let formData = new FormData();
-    console.log(file);
+
     formData.append("title", title);
     formData.append("category_id", categoryId);
-    formData.append("user_id", 1);
-    formData.append("slug", title.toLowerCase().replace("", "-"));
+    formData.append("user_id", auth.userId);
+    formData.append("slug", title.toLowerCase().replace(" ", "-"));
     formData.append("description", description);
-    formData.append("file", file);
+    formData.append("image", image);
 
     try {
       const store = await AxiosJwt.post("/blog", formData);
 
       if (store.data.status == "SUCCESS") {
-        navigate("/admin/vlog");
+        navigate("/admin/blog");
       }
     } catch (error) {
       if (error.response) {
@@ -60,7 +64,7 @@ const AddBlog = () => {
     <AdminLayout>
       <div className="container box mt-5">
         <Message messages={messages} closeMessage={closeMessage} />
-        <form onSubmit={store} className="box">
+        <form onSubmit={store}>
           <div className="field mt-3">
             <label className="label">Title</label>
             <div className="controls">
@@ -80,6 +84,7 @@ const AddBlog = () => {
                 className="input"
                 onChange={(e) => setCategoryId(e.target.value)}
               >
+                <option value="">Please select</option>
                 {categories.map((category, index) => (
                   <option key={index} value={category.id}>
                     {category.name}
@@ -101,14 +106,14 @@ const AddBlog = () => {
             </div>
           </div>
           <div className="field mt-3">
-            <label className="label">File</label>
+            <label className="label">Image</label>
             <div className="controls">
               <input
+                id="image"
                 type="file"
                 className="input"
-                placeholder="File"
-                value={file}
-                onChange={(e) => setFile(e.target.value)}
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
               />
             </div>
           </div>

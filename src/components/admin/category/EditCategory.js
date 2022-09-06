@@ -38,7 +38,7 @@ const EditCategory = () => {
 
     const data = {
       name: name,
-      slug: name.toLowerCase().replace("", "-"),
+      slug: name.toLowerCase().replace(" ", "-"),
     };
 
     try {

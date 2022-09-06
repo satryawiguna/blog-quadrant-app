@@ -31,7 +31,13 @@ const Login = () => {
       });
 
       if (register.data.status == "SUCCESS") {
-        dispatch(updateAuth({ logged: true, user: email }));
+        dispatch(
+          updateAuth({
+            logged: true,
+            userId: register.data.payload.id,
+            userEmail: email,
+          })
+        );
         localStorage.setItem(
           "access_token",
           register.data.payload.access_token

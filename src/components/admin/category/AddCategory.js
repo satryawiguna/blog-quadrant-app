@@ -16,7 +16,7 @@ const AddCategory = () => {
 
     const data = {
       name: name,
-      slug: name.toLowerCase().replace("", "-"),
+      slug: name.toLowerCase().replace(" ", "-"),
     };
 
     try {
@@ -40,7 +40,7 @@ const AddCategory = () => {
     <AdminLayout>
       <div className="container box mt-5">
         <Message messages={messages} closeMessage={closeMessage} />
-        <form onSubmit={store} className="box">
+        <form onSubmit={store}>
           <div className="field mt-3">
             <label className="label">Name</label>
             <div className="controls">

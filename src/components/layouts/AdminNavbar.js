@@ -13,7 +13,13 @@ const AdminNavbar = () => {
     try {
       await axios.post(`/auth/logout`);
       console.log("broo");
-      dispatch(updateAuth({ logged: false, user: null }));
+      dispatch(
+        updateAuth({
+          logged: false,
+          userId: null,
+          userEmail: null,
+        })
+      );
       navigate("/login", { replace: true });
     } catch (error) {
       console.log(error);

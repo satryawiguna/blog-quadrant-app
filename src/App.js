@@ -10,6 +10,7 @@ import BlogDetail from "./components/BlogDetail";
 import AddCategory from "./components/admin/category/AddCategory";
 import EditCategory from "./components/admin/category/EditCategory";
 import AddBlog from "./components/admin/blog/AddBlog";
+import EditBlog from "./components/admin/blog/EditBlog";
 
 function App() {
   return (
@@ -63,6 +64,14 @@ function App() {
         element={
           <>
             <AddBlog />
+          </>
+        }
+      />
+      <Route
+        path="/admin/blog/:id"
+        element={
+          <>
+            <EditBlog />
           </>
         }
       />
