@@ -37,7 +37,7 @@ const EditBlog = () => {
   useEffect(() => {
     if (blog) {
       setTitle(blog.title);
-      setCategoryId(blog.category_id);
+      setCategoryId(blog.category.id);
       setSlug(blog.slug);
       setDescription(blog.description);
       setCategoryId(blog.categoryId);

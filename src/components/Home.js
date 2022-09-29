@@ -19,7 +19,9 @@ const Home = () => {
           <Link to={`/blog/${blog.id}`}>
             <h2 className="title is-4">{blog.title}</h2>
           </Link>
-          <small>{blog.slug}</small> - <small>{blog.created_date}</small>
+          <p>
+            <small>{blog.slug}</small> : <small>{blog.created_date}</small>
+          </p>
           <img
             src={`${process.env.REACT_APP_BASE_IMAGE_URL}${blog.image_path}/${blog.image_file}`}
             className="mt-3 mb-3"

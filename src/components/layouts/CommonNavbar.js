@@ -36,11 +36,11 @@ const CommonNavbar = () => {
     >
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://www.satryawigua.me">
+          <Link className="navbar-item" to={`/`}>
             <strong>
               <h2>BLOG QUADRANT</h2>
             </strong>
-          </a>
+          </Link>
 
           <a
             href="/"
@@ -63,9 +63,14 @@ const CommonNavbar = () => {
             <div className="navbar-item">
               <div className="buttons">
                 {logged ? (
-                  <button onClick={logout} className="button is-light">
-                    Logout
-                  </button>
+                  <>
+                    <Link to={"/admin/dashboard"} className="button is-light">
+                      Dashboard
+                    </Link>
+                    <button onClick={logout} className="button is-light">
+                      Logout
+                    </button>
+                  </>
                 ) : (
                   <>
                     <Link to={"/login"} className="button is-light">

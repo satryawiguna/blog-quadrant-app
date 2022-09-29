@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateAuth } from "../../features/authSlice";
+import { Link } from "react-router-dom";
 
 const AdminNavbar = () => {
   const navigate = useNavigate();
@@ -34,11 +35,11 @@ const AdminNavbar = () => {
     >
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="https://www.satryawigua.me">
+          <Link className="navbar-item" to={`/`}>
             <strong>
               <h2>BLOG QUADRANT</h2>
             </strong>
-          </a>
+          </Link>
 
           <a
             href="/"

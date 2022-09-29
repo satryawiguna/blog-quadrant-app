@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAuth } from "../features/authSlice";
@@ -91,6 +91,12 @@ const Login = () => {
                   <button className="button is-success is-fullwidth">
                     Login
                   </button>
+                </div>
+                <div className="field mt-3">
+                  <small>
+                    Don't have account? <Link to={"/register"}>Click here</Link>{" "}
+                    for registration or back to <Link to={"/"}>Homepage</Link>
+                  </small>
                 </div>
               </form>
             </div>

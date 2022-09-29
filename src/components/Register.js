@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Message from "./Message";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const { logged, user } = useSelector((state) => state.auth);
+  const { logged } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (logged) {
@@ -119,6 +119,11 @@ const Register = () => {
                   <button className="button is-success is-fullwidth">
                     Register
                   </button>
+                </div>
+                <div className="field mt-3">
+                  <small>
+                    Back to login? <Link to={"/login"}>Click here</Link>
+                  </small>
                 </div>
               </form>
             </div>

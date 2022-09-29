@@ -6,11 +6,13 @@ import thunk from "redux-thunk";
 import categoryReducer from "../features/categorySlice";
 import blogReducer from "../features/blogSlice";
 import authReducer from "../features/authSlice";
+import commentReducer from "../features/commentSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   category: categoryReducer,
   blog: blogReducer,
+  comment: commentReducer,
 });
 
 const persistConfig = {
